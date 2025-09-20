@@ -1,0 +1,14 @@
+<h1>Nuestros productos</h1>
+<img src="/img/banner1.jpg" alt="Moto">
+<section class="productos">
+    @for(producto of productos; track producto.id){
+        <article class="producto">
+            <img [src]="producto.imagen" [alt]="producto.nombre">
+            <h3>{{producto.nombre}}</h3>
+            <p>{{producto.descripcion}}</p>
+            <strong>{{producto.precio}}</strong>
+            <br>
+            <button [routerLink]="['/productos', producto.id]" class="btn btn-primary">Ver más</button>
+        </article>
+    }
+</section>
