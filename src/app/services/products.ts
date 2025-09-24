@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 
 export interface Product{
   id: number;
+  ano: number;
+  modelo:string;
   nombre:string;
   descripcion: string;
   precio: number;
@@ -17,6 +19,8 @@ export class Products {
   private products:Product[] = [
     {
       id: 1,
+      ano: 2020,
+      modelo:'Sport',
       nombre: 'Honda Transa LP',
       descripcion : 'Ideal para ciudad',
       precio: 6500,
@@ -24,6 +28,8 @@ export class Products {
     },
     {
       id: 2,
+      ano: 2024,
+      modelo:'Trabajo',
       nombre: 'Kawasaky 600',
       descripcion: 'Potente y elegante',
       precio: 9200,
@@ -31,6 +37,8 @@ export class Products {
     },
     {
       id: 3,
+      ano: 2017,
+      modelo:'Todo Terreno',
       nombre: 'Kawasaky KX 250',
       descripcion: 'Moderna y económica',
       precio: 3900,
@@ -38,6 +46,8 @@ export class Products {
     },
    {
       id: 4,
+      ano: 2025,
+      modelo:'Sport',
       nombre: 'Suzuki 1200',
       descripcion: 'Moderna y económica',
       precio: 13900,
