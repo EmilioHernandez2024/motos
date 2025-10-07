@@ -1,0 +1,149 @@
+<div class="container mt-4">
+  <div class="card shadow-sm mx-auto" style="max-width: 600px;">
+    <div class="card-body">
+      <h4 class="card-title text-center mb-4">Agregar nuevo producto</h4>
+
+      <form (ngSubmit)="agregarProducto()" #formProducto="ngForm">
+        <!-- NOMBRE -->
+        <div class="form-group mb-3">
+          <label for="nombre">Nombre</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            [(ngModel)]="nuevoProducto.nombre"
+            name="nombre"
+            required
+          />
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div class="form-group mb-3">
+          <label for="descripcion">Descripción</label>
+          <textarea
+            class="form-control"
+            id="descripcion"
+            [(ngModel)]="nuevoProducto.descripcion"
+            name="descripcion"
+            rows="2"
+            required
+          ></textarea>
+        </div>
+
+        <!-- MODELO Y AÑO -->
+        <div class="form-row row">
+          <div class="form-group col-md-6">
+            <label for="modelo">Modelo</label>
+            <select
+              id="modelo"
+              class="form-control"
+              [(ngModel)]="nuevoProducto.modelo"
+              name="modelo"
+              required
+            >
+              <option value="" disabled selected>Seleccione un modelo</option>
+              <option *ngFor="let m of modelosDisponibles" [value]="m">{{ m }}</option>
+            </select>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="ano">Año</label>
+            <input
+              type="number"
+              class="form-control"
+              id="ano"
+              [(ngModel)]="nuevoProducto.ano"
+              name="ano"
+              min="2000"
+              max="2026"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- CANTIDAD Y ESTADO -->
+        <div class="form-row row">
+          <div class="form-group col-md-6">
+            <label for="cantidad">Cantidad</label>
+            <input
+              type="number"
+              class="form-control"
+              id="cantidad"
+              [(ngModel)]="nuevoProducto.cantidad"
+              name="cantidad"
+              min="0"
+              required
+            />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="estado">Estado</label>
+            <select
+              id="estado"
+              class="form-control"
+              [(ngModel)]="nuevoProducto.estado"
+              name="estado"
+              required
+            >
+              <option value="" disabled selected>Seleccione estado</option>
+              <option *ngFor="let e of estadosDisponibles" [value]="e">{{ e }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- PRECIO -->
+        <div class="form-group mb-3">
+          <label for="precio">Precio (USD)</label>
+          <input
+            type="number"
+            class="form-control"
+            id="precio"
+            [(ngModel)]="nuevoProducto.precio"
+            name="precio"
+            min="0"
+            required
+          />
+        </div>
+
+        <!-- IMAGEN -->
+        <div class="form-group mb-3">
+          <label for="imagen">Imagen</label>
+          <input
+            type="file"
+            class="form-control-file"
+            id="imagen"
+            (change)="onFileSelected($event)"
+          />
+        </div>
+
+        <div class="text-center mb-3">
+          <img
+            *ngIf="preview"
+            [src]="preview"
+            class="img-thumbnail"
+            style="max-width: 250px; height: auto;"
+          />
+        </div>
+
+        <!-- BOTONES -->
+        <button
+          type="submit"
+          class="btn btn-primary btn-block"
+          [disabled]="formProducto.invalid"
+        >
+          Agregar Producto
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-block mt-3"
+          (click)="volverAlPanel()"
+        >
+          <i class="fa fa-arrow-left"></i> Volver al Panel
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<br />

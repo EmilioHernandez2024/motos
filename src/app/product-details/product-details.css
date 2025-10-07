@@ -1,0 +1,58 @@
+.product-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #7f8c8d;
+  max-width: 1200px; /* Limita el ancho del contenedor */
+  margin: 2rem auto; /* Centra el contenedor horizontalmente y añade margen superior/inferior */
+  padding: 1.5rem; /* Aumenta el relleno interno para que no se vea tan pegado */
+  
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.product-image img {
+  max-width: 900px; /* Tamaño máximo para la imagen */
+  width: 100%; /* Asegura que la imagen sea responsiva */
+  height: auto;
+  border-radius: 6px;
+}
+
+.product-info {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.product-info h1 {
+  font-size: 2.8rem;
+  color: #34495e;
+}
+
+.product-info .description {
+  font-size: 1.3rem;
+  color: #7f8c8d;
+}
+
+.product-info .price {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  font-weight: bold;
+}
+.not-found {
+  text-align: center;
+  color: #c0392b;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+.product-details-container .product-image img {
+  width: 100%; /* Asegura que la imagen sea responsiva y ocupe el ancho completo del contenedor */
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08); /* Opcional: añade una pequeña sombra a la imagen */
+}

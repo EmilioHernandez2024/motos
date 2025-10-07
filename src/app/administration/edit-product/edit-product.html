@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <h3 class="mb-4">✏️ Editar Producto</h3>
+
+  <form (ngSubmit)="guardarCambios()">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label">Nombre</label>
+        <input [(ngModel)]="producto.nombre" name="nombre" class="form-control" required />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Modelo</label>
+        <input [(ngModel)]="producto.modelo" name="modelo" class="form-control" required />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Año</label>
+        <input type="number" [(ngModel)]="producto.ano" name="ano" class="form-control" required />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Cantidad</label>
+        <input type="number" [(ngModel)]="producto.cantidad" name="cantidad" class="form-control" min="0" required />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Precio</label>
+        <input type="number" [(ngModel)]="producto.precio" name="precio" class="form-control" required />
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label">Estado</label>
+        <select [(ngModel)]="producto.estado" name="estado" class="form-select">
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">Descripción</label>
+        <textarea [(ngModel)]="producto.descripcion" name="descripcion" class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="col-12">
+        <label class="form-label">URL de Imagen</label>
+        <input [(ngModel)]="producto.imagen" name="imagen" class="form-control" />
+      </div>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-between">
+      <button type="submit" class="btn btn-success">
+        💾 Guardar Cambios
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="volverAlListado()">
+        ⬅️ Volver al Listado
+      </button>
+    </div>
+  </form>
+</div>

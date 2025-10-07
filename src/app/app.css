@@ -1,0 +1,16 @@
+/* app.component.css o styles.css */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ocupa al menos el 100% de la altura de la ventana */
+}
+
+.content-wrapper {
+  flex-grow: 1; /* Esto hace que el contenedor del dashboard crezca */
+}
+
+/* Opcional: Para evitar márgenes o paddings indeseados */
+body, html {
+  margin: 0;
+  padding: 0;
+}

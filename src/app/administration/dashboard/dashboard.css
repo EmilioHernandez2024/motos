@@ -1,0 +1,20 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+#wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex: 1;
+}
+
+#sidebar-wrapper {
+  /* Asegura que la barra lateral se estire y no se encoja */
+  flex-shrink: 0;
+}
+
+#page-content-wrapper {
+  /* Permite que el contenido principal ocupe el espacio restante */
+  flex-grow: 1;
+}

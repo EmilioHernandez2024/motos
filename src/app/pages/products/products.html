@@ -1,0 +1,86 @@
+<h1>Nuestros productos</h1>
+
+<div *ngIf="!isModeloView">
+  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      @for (producto of productos; track producto.id; let i = $index) {
+        <li data-target="#carouselExampleIndicators" [attr.data-slide-to]="i" [class.active]="i === 0"></li>
+      }
+    </ol>
+    <div class="carousel-inner">
+      @for (producto of productos; track producto.id; let i = $index) {
+        <div class="carousel-item" [class.active]="i === 0">
+          <img class="d-block w-100" [src]="producto.imagen" [alt]="producto.nombre">
+          <div class="carousel-caption d-none d-md-block">
+            <h2>{{ producto.nombre }}</h2><br>
+            <a [routerLink]="['/productos', producto.id]" class="custom-button">Ver más</a>
+          </div>
+        </div>
+      }
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+  </div>
+</div>
+
+<!-- Filtros -->
+<div class="modelos-botones">
+  <!-- Reset global -->
+  <a [routerLink]="['/productos']"
+     [queryParams]="{}"
+     class="filter-button"
+     [ngClass]="{'active': !activeModeloFilter && !activeAnoFilter}">
+    Todos
+  </a>
+
+  <!-- Filtros por modelo -->
+  <a [routerLink]="['/productos']"
+     [queryParams]="{ modelo: activeModeloFilter === 'Sport' ? null : 'Sport', ano: activeAnoFilter }"
+     class="filter-button"
+     [ngClass]="{'active': activeModeloFilter === 'Sport'}">
+    Sport
+  </a>
+
+  <a [routerLink]="['/productos']"
+     [queryParams]="{ modelo: activeModeloFilter === 'Trabajo' ? null : 'Trabajo', ano: activeAnoFilter }"
+     class="filter-button"
+     [ngClass]="{'active': activeModeloFilter === 'Trabajo'}">
+    Trabajo
+  </a>
+
+  <a [routerLink]="['/productos']"
+     [queryParams]="{ modelo: activeModeloFilter === 'Todo Terreno' ? null : 'Todo Terreno', ano: activeAnoFilter }"
+     class="filter-button"
+     [ngClass]="{'active': activeModeloFilter === 'Todo Terreno'}">
+    Todo Terreno
+  </a>
+   <br>
+   <br>
+  <!-- Filtros por año -->
+  <a [routerLink]="['/productos']"
+     *ngFor="let ano of availableAnos"
+     [queryParams]="{ modelo: activeModeloFilter, ano: activeAnoFilter === ano ? null : ano }"
+     class="filter-button"
+     [ngClass]="{'active': activeAnoFilter === ano}">
+    {{ ano }}
+  </a>
+</div>
+
+<!-- Lista de productos -->
+<section class="productos">
+  @for(producto of productos; track producto.id){
+    <article class="producto">
+      <img [src]="producto.imagen" [alt]="producto.nombre">
+      <h3>{{producto.nombre}}</h3>
+      <p>{{producto.descripcion}}</p>
+      <p><strong>Año: </strong>{{producto.ano}}</p>
+      <strong>{{producto.precio}}</strong>
+      <br>
+      <a [routerLink]="['/productos', producto.id]" class="custom-button">Ver más</a>
+    </article>
+  }
+</section>
