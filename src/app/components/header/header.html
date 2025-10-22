@@ -1,9 +1,63 @@
-<header>
-    <nav>
-        <a routerLink="/">Inicio</a>
-        <a routerLink="/productos">Productos</a>
-        <a routerLink="/nosotros">Nosotros</a>
-        <a routerLink="/contacto">Contacto</a>
-        <a routerLink="/admin">Dashboard</a>
-    </nav>
+<header class="bg-dark text-white shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-dark container">
+    <a class="navbar-brand fw-bold" routerLink="/">MotoSport</a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/productos">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/nosotros">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contacto">Contacto</a>
+        </li>
+
+        <!-- Solo el admin ve el Dashboard -->
+        <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'">
+          <a class="nav-link text-warning fw-semibold" routerLink="/admin">
+            <i class="fas fa-tools"></i> Dashboard
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ml-auto">
+        <!-- Si el usuario NO ha iniciado sesión -->
+        <li class="nav-item" *ngIf="!isLoggedIn">
+          <a class="btn btn-outline-light btn-sm" routerLink="/login">Login</a>
+        </li>
+
+        <!-- Si el usuario ha iniciado sesión -->
+        <li class="nav-item dropdown" *ngIf="isLoggedIn">
+          <a
+            class="nav-link dropdown-toggle text-info"
+            href="#"
+            id="userMenu"
+            role="button"
+            data-toggle="dropdown"
+          >
+            <i class="fas fa-user-circle"></i> {{ userName }}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item text-danger" (click)="logout()">
+              <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
 </header>

@@ -1,3 +1,4 @@
+//  Sitio publico
 import { Routes } from '@angular/router';
 import { Home } from './pages/home/home';
 import { About } from './pages/about/about';
@@ -12,12 +13,15 @@ import { Listado } from './administration/list/listado';
 import { ListProduct } from './administration/list-product/list-product';
 import { Welcome } from './administration/welcome/welcome';
 import { EditProduct } from './administration/edit-product/edit-product';
+import { Rol } from './administration/rol/rol';
+import { Login } from './pages/login/login';
 
 export const routes: Routes = [
   //  Sitio publico
   { path: '', component: Home },
   { path: 'nosotros', component: About },
   { path: 'productos', component: Productos },
+  { path: 'login', component: Login },
   { path: 'productos/:id', component: ProductDetails },
   { path: 'contacto', component: Contact },
 
@@ -26,8 +30,9 @@ export const routes: Routes = [
   path: 'admin',
   component: Dashboard,
   children: [
-    { path: '', component: Welcome }, //  Este será el predeterminado
+    { path: '', component: Welcome }, 
     { path: 'list', component: Listado },
+    { path: 'rol', component: Rol },
     { path: 'list-product', component: ListProduct },
     { path: 'edit-product/:id', component: EditProduct },
     { path: '**', redirectTo: '' } //  cualquier otra ruta dentro de admin vuelve a Welcome
@@ -35,6 +40,6 @@ export const routes: Routes = [
 },
 
 
-  // 🔹 Cualquier ruta desconocida vuelve al inicio
+  // Cualquier ruta desconocida vuelve al inicio
   { path: '**', redirectTo: '' }
 ];

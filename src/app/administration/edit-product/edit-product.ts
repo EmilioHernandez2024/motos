@@ -14,7 +14,8 @@ import Swal from 'sweetalert2'; // 👈 Importa SweetAlert2
 export class EditProduct implements OnInit {
   producto!: Product;
   id!: number;
-
+  nombreArchivo: string = '';
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -30,7 +31,18 @@ export class EditProduct implements OnInit {
       this.router.navigate(['/admin', 'list-product']);
     }
   }
+onFileSelected(event: any) {
+  const file = event.target.files[0];
+  if (file) {
+    this.nombreArchivo = file.name;
 
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.producto.imagen = reader.result as string; 
+    };
+    reader.readAsDataURL(file);
+  }
+}
   guardarCambios() {
     const productos = this.productService.getProducts();
     const index = productos.findIndex(p => p.id === this.id);

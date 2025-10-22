@@ -3,15 +3,14 @@ header{
     padding: 20px;
 }
 nav a{
-    color: white;
-    margin: 0 20px;
+    color: #ccc; 
     text-decoration: none;
+    margin: 0 20px;
     padding: 10px 20px;
 }
-nav a:hover{
-    background-color: white;
-    color: black;
-    border-radius: 20px;
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* sutil */
+  color: #fff;
 }
 
 /* Login*/

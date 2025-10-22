@@ -1,14 +1,17 @@
 <div class="d-flex" id="wrapper">
   <div class="bg-dark text-white border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading text-center py-4">
-      <h5>Panel</h5>
-    </div>
     <div class="list-group list-group-flush">
+            <a routerLink="/admin" class="list-group-item list-group-item-action bg-dark text-white text-center py-4">
+        <i class="fa fa-plus"></i><h5>Panel</h5> 
+      </a>
       <a routerLink="/admin/list" class="list-group-item list-group-item-action bg-dark text-white">
-        <i class="fa fa-plus"></i> Agregar Producto
+        <i class="nav-link"></i> Agregar Producto
       </a>
       <a routerLink="/admin/list-product" class="list-group-item list-group-item-action bg-dark text-white">
-        <i class="fa fa-list"></i> Listar Productos
+        <i class="nav-link"></i> Listar Productos
+      </a>
+            <a routerLink="/admin/rol" class="list-group-item list-group-item-action bg-dark text-white">
+        <i class="nav-link"></i> Roles
       </a>
     </div>
   </div>
@@ -19,7 +22,7 @@
       <span class="navbar-brand ml-3">Dashboard</span>
     </nav>
 
-    <!-- AQUI se mostrará cada vista hija -->
+    <!-- AquI se mostrará cada vista hija -->
     <div class="container-fluid mt-4 flex-grow-1">
       <router-outlet></router-outlet>
     </div>

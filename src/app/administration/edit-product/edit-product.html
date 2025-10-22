@@ -1,58 +1,144 @@
-<div class="container mt-4">
-  <h3 class="mb-4">✏️ Editar Producto</h3>
+<div class="container mt-4 mb-5 p-4 rounded shadow-lg bg-light">
+  <h3 class="mb-4 text-center fw-bold text-primary">
+    Editar Producto
+  </h3>
 
-  <form (ngSubmit)="guardarCambios()">
+  <form (ngSubmit)="guardarCambios()" autocomplete="off">
     <div class="row g-3">
-      <div class="col-md-6">
-        <label class="form-label">Nombre</label>
-        <input [(ngModel)]="producto.nombre" name="nombre" class="form-control" required />
+      <!-- NOMBRE -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Nombre</label>
+        <input
+          [(ngModel)]="producto.nombre"
+          name="nombre"
+          class="form-control"
+          placeholder="Ejemplo: Honda Transalp LP"
+          required
+        />
       </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Modelo</label>
-        <input [(ngModel)]="producto.modelo" name="modelo" class="form-control" required />
+      <!-- MODELO (select) -->
+<div class="col-md-4">
+  <label for="modelo"  class="form-label fw-semibold">Modelo</label>
+    <select
+      id="modelo"
+      [(ngModel)]="producto.modelo"
+      name="modelo"
+      class="custom-select border-primary"
+      required
+    >
+      <option value="" disabled selected>Seleccione un modelo</option>
+      <option value="Sport">Sport</option>
+      <option value="Trabajo">Trabajo</option>
+      <option value="Todo Terreno">Todo Terreno</option>
+    </select>
+  </div>
+
+
+      <!-- AÑO -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Año</label>
+        <input
+          type="number"
+          [(ngModel)]="producto.ano"
+          name="ano"
+          class="form-control"
+          required
+        />
       </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Año</label>
-        <input type="number" [(ngModel)]="producto.ano" name="ano" class="form-control" required />
+      <!-- CANTIDAD -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Cantidad</label>
+        <input
+          type="number"
+          [(ngModel)]="producto.cantidad"
+          name="cantidad"
+          class="form-control"
+          min="0"
+          required
+        />
       </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Cantidad</label>
-        <input type="number" [(ngModel)]="producto.cantidad" name="cantidad" class="form-control" min="0" required />
+      <!-- PRECIO -->
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Precio ($)</label>
+        <input
+          type="number"
+          [(ngModel)]="producto.precio"
+          name="precio"
+          class="form-control"
+          required
+        />
       </div>
 
-      <div class="col-md-6">
-        <label class="form-label">Precio</label>
-        <input type="number" [(ngModel)]="producto.precio" name="precio" class="form-control" required />
-      </div>
-
-      <div class="col-md-6">
-        <label class="form-label">Estado</label>
-        <select [(ngModel)]="producto.estado" name="estado" class="form-select">
+      <!-- ESTADO -->
+<div class="col-md-4">
+  <label for="Estado"  class="form-label fw-semibold">Estado</label>
+        <select
+          [(ngModel)]="producto.estado"
+          name="estado"
+          class="custom-select border-primary"
+        >
           <option value="Activo">Activo</option>
           <option value="Inactivo">Inactivo</option>
         </select>
       </div>
 
-      <div class="col-12">
-        <label class="form-label">Descripción</label>
-        <textarea [(ngModel)]="producto.descripcion" name="descripcion" class="form-control" rows="3"></textarea>
-      </div>
 
+      <!-- IMAGEN -->
+       
+      <div class="col-md-6">
+  <label class="form-label fw-semibold">Imagen del Producto</label>
+
+  <div class="custom-file">
+    <input
+      type="file"
+      class="custom-file-input"
+      id="imagenInput"
+      accept="image/*"
+      (change)="onFileSelected($event)"/>
+
+    <label class="custom-file-label" for="imagenInput">
+      {{ nombreArchivo || 'Seleccionar imagen...' }}
+    </label>
+  </div>
+
+  <!-- Vista previa -->
+  <div class="text-center mt-3" *ngIf="producto.imagen">
+    <img
+      [src]="producto.imagen"
+      alt="Vista previa"
+      class="img-thumbnail rounded shadow-sm"
+      style="max-height: 180px;"
+    />
+  </div>
+</div>
+
+      <!-- DESCRIPCIÓN -->
       <div class="col-12">
-        <label class="form-label">URL de Imagen</label>
-        <input [(ngModel)]="producto.imagen" name="imagen" class="form-control" />
+        <label class="form-label fw-semibold">Descripción</label>
+        <textarea
+          [(ngModel)]="producto.descripcion"
+          name="descripcion"
+          class="form-control"
+          rows="3"
+          placeholder="Describe brevemente el producto..."
+        ></textarea>
       </div>
     </div>
 
+    <!-- BOTONES -->
     <div class="mt-4 d-flex justify-content-between">
-      <button type="submit" class="btn btn-success">
-        💾 Guardar Cambios
+      <button type="submit" class="btn btn-success px-4">
+         Guardar Cambios
       </button>
-      <button type="button" class="btn btn-secondary" (click)="volverAlListado()">
-        ⬅️ Volver al Listado
+      <button
+        type="button"
+        class="btn btn-secondary px-4"
+        (click)="volverAlListado()"
+      >
+         Volver al Listado
       </button>
     </div>
   </form>
